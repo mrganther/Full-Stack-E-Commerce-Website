@@ -1,13 +1,17 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-a.active hr{
-    display: block;
+a.active hr {
+  display: block;
 }
 
-@media (max-width:640px) {
-    a.active{
-        background-color: black;
-        color: white;
-    }
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  a.active {
+    background-color: black;
+    color: white;
+  }
 }
