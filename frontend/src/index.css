@@ -9,6 +9,12 @@ a.active hr {
   display: none;
 }
 
+.mask-gradient-to-t {
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+  mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+
 @media (max-width: 640px) {
   a.active {
     background-color: black;

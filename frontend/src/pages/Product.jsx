@@ -7,6 +7,17 @@ const Product = () => {
   const { products, currency } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  const colorOptions = {
+    Red: "#dc2626",
+    Blue: "#2563eb",
+    Green: "#16a34a",
+    Black: "#000000",
+    White: "#ffffff",
+    Yellow: "#facc15",
+    Brown: "#92400e",
+  };
 
   const fecthProductData = async () => {
     products.map((item) => {
@@ -58,13 +69,34 @@ const Product = () => {
             </p>
             <div className="flex flex-col gap-4 my-8">
               <p>Select Colour</p>
-              <div className="flex gap-2">
-                {productData.color.map((item, index) => (
-                  <button className={`py-2 px-4 bg-gray-100`} key={index}>
-                    {item}
-                  </button>
-                ))}
+              <div className="flex gap-3">
+                {productData.color.map((colorName, index) => {
+                  const colorValue = colorOptions[colorName];
+                  if (!colorValue) return null;
+
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedColor(colorName)}
+                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition ${
+                        selectedColor === colorName
+                          ? "border-gray-900 "
+                          : "border-gray-300 hover:border-gray-400"
+                      }`}
+                    >
+                      <span
+                        className="w-8 h-8 rounded-full"
+                        style={{ backgroundColor: colorValue }}
+                      />
+                    </button>
+                  );
+                })}
               </div>
+              {selectedColor && (
+                <p className="text-sm text-gray-600">
+                  Selected: <span className="font-medium">{selectedColor}</span>
+                </p>
+              )}
             </div>
           </div>
         </div>
