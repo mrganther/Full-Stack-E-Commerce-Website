@@ -98,6 +98,14 @@ const Product = () => {
                 </p>
               )}
             </div>
+            <button className="bg-black text-white px-8 py-3 text-sm active:bg-gray">
+              ADD TO CART
+            </button>
+            <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
+              <p>text1</p>
+              <p>text2</p>
+              <p>text3</p>
+            </div>
           </div>
         </div>
       </div>
