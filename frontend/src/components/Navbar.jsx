@@ -12,7 +12,7 @@ export default function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  const { setShowSearch } = useContext(ShopContext);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
     <div>
@@ -94,7 +94,7 @@ export default function Navbar() {
             <Link to="/cart" className="relative">
               <img src={assets.cart_icon} alt="" className="w-8 min-w-8:" />
               <p className="absolute right-[-5px] bottom-[-5px] w-5 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]">
-                10
+                {getCartCount()}
               </p>
             </Link>
             <img

@@ -90,7 +90,7 @@ export const products = [
     _id: "pvs1w",
     name: "Pottery Vase",
     description:
-      "small wide bowel that can be used for placing small items or food",
+      "small wide bowl that can be used for placing small items or food",
     price: 30,
     image: [item_1],
     category: "Vase",

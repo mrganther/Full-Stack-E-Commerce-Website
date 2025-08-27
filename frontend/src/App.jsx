@@ -2,8 +2,11 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
 
-{/* Page imports */}
+{
+  /* Page imports */
+}
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
@@ -20,38 +23,39 @@ const pageVariants = {
   initial: {
     opacity: 0,
     x: -100,
-    scale: 0.95
+    scale: 0.95,
   },
   in: {
     opacity: 1,
     x: 0,
-    scale: 1
+    scale: 1,
   },
   out: {
     opacity: 0,
     x: 100,
-    scale: 0.95
-  }
+    scale: 0.95,
+  },
 };
 
 const pageTransition = {
-  type: 'tween',
-  ease: 'anticipate',
-  duration: 0.4
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.4,
 };
 
 const App = () => {
   const location = useLocation();
 
   return (
-    <div className="bg-white dark:bg-gray-950">
+    <div className="bg-gray-100 dark:bg-gray-950">
+      <ToastContainer />
       <Navbar />
       <SearchBar />
-      
+
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <motion.div
                 initial="initial"
@@ -62,10 +66,10 @@ const App = () => {
               >
                 <Home />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/about" 
+          <Route
+            path="/about"
             element={
               <motion.div
                 initial="initial"
@@ -76,10 +80,10 @@ const App = () => {
               >
                 <About />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/cart" 
+          <Route
+            path="/cart"
             element={
               <motion.div
                 initial="initial"
@@ -90,10 +94,10 @@ const App = () => {
               >
                 <Cart />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/collection" 
+          <Route
+            path="/collection"
             element={
               <motion.div
                 initial="initial"
@@ -104,10 +108,10 @@ const App = () => {
               >
                 <Collection />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/contact" 
+          <Route
+            path="/contact"
             element={
               <motion.div
                 initial="initial"
@@ -118,10 +122,10 @@ const App = () => {
               >
                 <Contact />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/login" 
+          <Route
+            path="/login"
             element={
               <motion.div
                 initial="initial"
@@ -132,10 +136,10 @@ const App = () => {
               >
                 <Login />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/orders" 
+          <Route
+            path="/orders"
             element={
               <motion.div
                 initial="initial"
@@ -146,10 +150,10 @@ const App = () => {
               >
                 <Orders />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/placeOrder" 
+          <Route
+            path="/placeOrder"
             element={
               <motion.div
                 initial="initial"
@@ -160,10 +164,10 @@ const App = () => {
               >
                 <PlaceOrder />
               </motion.div>
-            } 
+            }
           />
-          <Route 
-            path="/product/:productId" 
+          <Route
+            path="/product/:productId"
             element={
               <motion.div
                 initial="initial"
@@ -174,17 +178,17 @@ const App = () => {
               >
                 <Product />
               </motion.div>
-            } 
+            }
           />
         </Routes>
       </AnimatePresence>
-      
-      {/* Sticky blur line that stops at the end of <main> (right before footer) */}
+
+      {/* Sticky blur line that stops at the end of <main> (right before footer)
       <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-10 z-50">
-        <div className="absolute inset-0 backdrop-blur-sm bg-black/2 mask-gradient-to-t"></div>
         <div className="absolute inset-0 backdrop-blur-sm bg-black/5 mask-gradient-to-t"></div>
-        <div className="absolute inset-0 backdrop-blur-sm bg-black/8 mask-gradient-to-t"></div>
-      </div>
+        <div className="absolute inset-0 backdrop-blur-sm bg-black/10 mask-gradient-to-t"></div>
+        <div className="absolute inset-0 backdrop-blur-sm bg-black/20 mask-gradient-to-t"></div>
+      </div> */}
 
       <Footer />
     </div>

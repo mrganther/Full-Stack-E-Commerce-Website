@@ -85,42 +85,44 @@ const Collection = () => {
           </p>
           {/* Category Filter */}
           <div
-            className={`border border-gray-300 pl-5 py-3 mt-6 ${
+            className={`border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 pl-5 py-3 mt-6 ${
               showFilter ? "" : "hidden"
             } sm:block`}
           >
-            <p className="mb-3 text-sm font-medium">CATEGORIES</p>
+            <p className="mb-3 text-sm font-medium dark:text-gray-300">
+              CATEGORIES
+            </p>
             <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-              <p className="flex gap-2">
+              <p className="flex gap-2 dark:text-gray-300">
                 <input
-                  className="w-3"
+                  className="w-3 "
                   type="checkbox"
                   value={"Vase"}
                   onChange={toggleCategory}
                 />{" "}
                 Vase
               </p>
-              <p className="flex gap-2">
+              <p className="flex gap-2 dark:text-gray-300">
                 <input
-                  className="w-3"
+                  className="w-3 "
                   type="checkbox"
                   value={"Plate"}
                   onChange={toggleCategory}
                 />{" "}
                 Plate
               </p>
-              <p className="flex gap-2">
+              <p className="flex gap-2 dark:text-gray-300">
                 <input
-                  className="w-3"
+                  className="w-3 "
                   type="checkbox"
                   value={"Bowl"}
                   onChange={toggleCategory}
                 />{" "}
                 Bowl
               </p>
-              <p className="flex gap-2">
+              <p className="flex gap-2 dark:text-gray-300">
                 <input
-                  className="w-3"
+                  className="w-3 "
                   type="checkbox"
                   value={"Mug"}
                   onChange={toggleCategory}
@@ -132,14 +134,14 @@ const Collection = () => {
         </div>
 
         {/* RightSide */}
-        <div className="flex-1 p-5 bg-white">
+        <div className="flex-1 p-5 bg-white dark:bg-gray-800">
           <div className="p">
             <div className="flex justify-between text-base sm:text-2x1 mb-4">
               <Title text1={"ALL"} text2={"PRODUCTS"} />
               {/* Product Sort */}
               <select
                 onChange={(e) => setSortType(e.target.value)}
-                className="border-2 border-grey-300 text-sm px-2"
+                className="border-2 border-gray-300 dark:border-gray-700 dark:text-gray-300 text-sm px-2"
               >
                 <option value="relavent">Sort by: Relavent</option>
                 <option value="low-high">Sort by: Low to High</option>

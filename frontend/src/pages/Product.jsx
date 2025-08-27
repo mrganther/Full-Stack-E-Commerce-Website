@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ShopContext } from "../context/ShopContext";
+import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [selectedColor, setSelectedColor] = useState(null);
@@ -23,7 +24,6 @@ const Product = () => {
     products.map((item) => {
       if (item._id === productId) {
         setProductData(item);
-        console.log(item);
         setImage(item.image[0]);
         return null;
       }
@@ -98,7 +98,10 @@ const Product = () => {
                 </p>
               )}
             </div>
-            <button className="bg-black text-white px-8 py-3 text-sm active:bg-gray">
+            <button
+              onClick={() => addToCart(productData._id, selectedColor)}
+              className="bg-black text-white px-8 py-3 text-sm active:bg-gray"
+            >
               ADD TO CART
             </button>
             <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
@@ -108,6 +111,28 @@ const Product = () => {
             </div>
           </div>
         </div>
+
+        {/* Description and Review */}
+        <div className="mt-20">
+          <div className="flex">
+            <b className="border px-5 py-3 text-sm">DESCRIPTION</b>
+            <p className="border px-5 py-3 text-sm">Reviews!</p>
+          </div>
+          <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
+            <p>poop and some more other poop i guess</p>
+            <p>
+              Some other issues about poop and stuff but idk i guess we will
+              find out one way or another at some point today or tomorrow
+            </p>
+          </div>
+        </div>
+
+        {/* Related Products */}
+
+        <RelatedProducts
+          category={productData.category}
+          currentItem={productData}
+        />
       </div>
     </div>
   ) : (
