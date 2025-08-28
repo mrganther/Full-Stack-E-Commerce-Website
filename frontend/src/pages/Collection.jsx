@@ -3,6 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
+import SearchBar from "../components/SearchBar";
 
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
@@ -22,7 +23,7 @@ const Collection = () => {
   const applyFilter = () => {
     let productsCopy = products.slice();
 
-    if (showSearch && search) {
+    if (search) {
       productsCopy = productsCopy.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
@@ -83,6 +84,9 @@ const Collection = () => {
               className={`h-3 sm:hidden ${showFilter ? "rotate-90" : ""}`}
             />
           </p>
+
+          <SearchBar />
+
           {/* Category Filter */}
           <div
             className={`border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 pl-5 py-3 mt-6 ${

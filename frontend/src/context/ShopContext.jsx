@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -39,11 +39,10 @@ const ShopContextProvider = (props) => {
     let totalCount = 0;
     for (const items in cartItems) {
       for (const item in cartItems[items]) {
-        try {
-          if (cartItems[items][item] > 0) {
-            totalCount += cartItems[items][item];
-          }
-        } catch (error) {}
+        const value = cartItems[items][item];
+        if (Number.isInteger(value) && value > 0) {
+          totalCount += value;
+        }
       }
     }
 
@@ -62,11 +61,10 @@ const ShopContextProvider = (props) => {
     for (const items in cartItems) {
       let itemInfo = products.find((product) => product._id === items);
       for (const item in cartItems[items]) {
-        try {
-          if (cartItems[items][item] > 0) {
-            totalAmount += itemInfo.price * cartItems[items][item];
-          }
-        } catch (error) {}
+        const value = cartItems[items][item];
+        if (Number.isInteger(value) && value > 0) {
+          totalAmount += itemInfo.price * cartItems[items][item];
+        }
       }
     }
     return totalAmount;

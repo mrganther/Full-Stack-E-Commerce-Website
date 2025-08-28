@@ -25,14 +25,19 @@ const Cart = () => {
     setCartData(tempData);
   }, [cartItems]);
   return (
-    <div className="my-10 px-4 mb-40 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-      <div className="pt-14">
+    <div className=" my-10 px-4 mb-40 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+      <div className="bg-white mr-30 ml-30 mt-10 mb-0 p-10">
         <div className="text-2x1 mb-3">
           <Title text1={"YOUR"} text2={"CART"} />
         </div>
 
         <div>
-          {cartData.map((item, index) => {
+          <div className="py-4 border bg-gray-50 border-gray-400 grid grid-cols-[0.fr_4fr_0.5fr] sm:grid-cols-[0.5fr_4fr_1fr] items-center font-semibold gap-4">
+            <h1></h1>
+            <h1 className="">Product</h1>
+            <h1>Quantity</h1>
+          </div>
+          {cartData.map((item) => {
             const productData = products.find(
               (product) => product._id === item._id
             );
@@ -40,8 +45,14 @@ const Cart = () => {
             return (
               <div
                 key={`${item._id}-${item.color}`}
-                className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
+                className="py-4 border-l border-r border-b border-gray-400 text-gray-700 grid grid-cols-[0.5fr_4fr_0.5fr] sm:grid-cols-[0.5fr_4fr_1fr] items-center gap-4"
               >
+                <img
+                  onClick={() => updateQuantity(item._id, item.color, 0)}
+                  src={assets.bin_icon}
+                  alt=""
+                  className="w-4 ml-5 sm:w-5 cursor-pointer"
+                />
                 <div className="flex items-start gap-6">
                   <img
                     src={productData.image[0]}
@@ -69,16 +80,10 @@ const Cart = () => {
                           Number(e.target.value)
                         )
                   }
-                  className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
+                  className="border max-w-10 sm:max-w-15 px-1 sm:px-2 py-1"
                   type="number"
                   min={1}
                   value={item.quantity}
-                />
-                <img
-                  onClick={() => updateQuantity(item._id, item.color, 0)}
-                  src={assets.bin_icon}
-                  alt=""
-                  className="w-4 mr-4 sm:w-5 cursor-pointer"
                 />
               </div>
             );

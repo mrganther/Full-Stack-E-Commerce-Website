@@ -17,7 +17,6 @@ import Orders from "./pages/Orders";
 import PlaceOrder from "./pages/PlaceOrder";
 import Product from "./pages/Product";
 import Footer from "./components/Footer";
-import SearchBar from "./components/SearchBar";
 
 const pageVariants = {
   initial: {
@@ -50,7 +49,6 @@ const App = () => {
     <div className="bg-gray-100 dark:bg-gray-950">
       <ToastContainer />
       <Navbar />
-      <SearchBar />
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>

@@ -12,7 +12,7 @@ export default function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  const { setShowSearch, getCartCount } = useContext(ShopContext);
+  const { getCartCount } = useContext(ShopContext);
 
   return (
     <div>
@@ -69,13 +69,6 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-6">
-            <img
-              onClick={() => setShowSearch(true)}
-              src={assets.search_icon}
-              alt=""
-              className="w-5 cursor-pointer"
-            />
-
             <div className="group relative">
               <img
                 src={assets.profile_icon}
