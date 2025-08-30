@@ -5,34 +5,19 @@ import { assets } from "../assets/assets";
 import CartTotal from "../components/CartTotal";
 
 const Cart = () => {
-  const { products, currency, cartItems, updateQuantity, navigate } =
+  const { products, currency, getCartData, updateQuantity, navigate } =
     useContext(ShopContext);
-  const [cartData, setCartData] = useState([]);
 
-  useEffect(() => {
-    const tempData = [];
-    for (const items in cartItems) {
-      for (const item in cartItems[items]) {
-        if (cartItems[items][item] > 0) {
-          tempData.push({
-            _id: items,
-            color: item,
-            quantity: cartItems[items][item],
-          });
-        }
-      }
-    }
-    setCartData(tempData);
-  }, [cartItems]);
+  const cartData = getCartData();
+
   return (
     <div className=" my-10 px-4 mb-40 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-      <div className="bg-white mr-30 ml-30 mt-10 mb-0 p-10">
+      <div className="bg-white mr-30 ml-30 mt-10 mb-0 p-10 sm:mr-15 sm:ml-15">
         <div className="text-2x1 mb-3">
           <Title text1={"YOUR"} text2={"CART"} />
         </div>
-
         <div>
-          <div className="py-4 border bg-gray-50 border-gray-400 grid grid-cols-[0.fr_4fr_0.5fr] sm:grid-cols-[0.5fr_4fr_1fr] items-center font-semibold gap-4">
+          <div className="py-4 border bg-gray-50 border-gray-400 grid grid-cols-[0.5fr_4fr_0.5fr] sm:grid-cols-[0.5fr_4fr_1fr] items-center font-semibold text-gray-800 gap-4">
             <h1></h1>
             <h1 className="">Product</h1>
             <h1>Quantity</h1>
@@ -96,7 +81,7 @@ const Cart = () => {
             <div className="w-full text-end">
               <button
                 onClick={() => navigate("/place-order")}
-                className="bg-black text-white text-sm my-8 px-8 py-3"
+                className="bg-black text-white text-sm rounded-sm my-8 px-8 py-3"
               >
                 PROCEED TO CHECKOUT
               </button>

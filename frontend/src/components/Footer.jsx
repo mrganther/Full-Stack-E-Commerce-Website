@@ -1,8 +1,11 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-  return (
+  const isPlaceOrder = location.pathname === "/place-order";
+
+  return !isPlaceOrder ? (
     <div className="p-4 pl-8 bg-green-800 dark:bg-black">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-10 text-sm">
         <div>
@@ -36,7 +39,7 @@ const Footer = () => {
         </p>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Footer;

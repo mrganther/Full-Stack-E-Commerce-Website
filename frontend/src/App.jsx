@@ -44,12 +44,12 @@ const pageTransition = {
 
 const App = () => {
   const location = useLocation();
+  const isPlaceOrder = location.pathname === "/place-order";
 
   return (
     <div className="bg-gray-100 dark:bg-gray-950">
       <ToastContainer />
       <Navbar />
-
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
@@ -151,7 +151,7 @@ const App = () => {
             }
           />
           <Route
-            path="/placeOrder"
+            path="/place-order"
             element={
               <motion.div
                 initial="initial"
@@ -180,14 +180,12 @@ const App = () => {
           />
         </Routes>
       </AnimatePresence>
-
       {/* Sticky blur line that stops at the end of <main> (right before footer)
       <div className="pointer-events-none sticky bottom-0 left-0 right-0 h-10 z-50">
         <div className="absolute inset-0 backdrop-blur-sm bg-black/5 mask-gradient-to-t"></div>
         <div className="absolute inset-0 backdrop-blur-sm bg-black/10 mask-gradient-to-t"></div>
         <div className="absolute inset-0 backdrop-blur-sm bg-black/20 mask-gradient-to-t"></div>
       </div> */}
-
       <Footer />
     </div>
   );

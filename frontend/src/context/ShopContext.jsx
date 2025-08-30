@@ -70,6 +70,23 @@ const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  const getCartData = () => {
+    const tempData = [];
+    for (const items in cartItems) {
+      for (const item in cartItems[items]) {
+        const value = cartItems[items][item];
+        if (Number.isInteger(value) && value > 0) {
+          tempData.push({
+            _id: items,
+            color: item,
+            quantity: value,
+          });
+        }
+      }
+    }
+    return tempData;
+  };
+
   const value = {
     products,
     currency,
@@ -81,6 +98,7 @@ const ShopContextProvider = (props) => {
     cartItems,
     addToCart,
     getCartCount,
+    getCartData,
     updateQuantity,
     getCartAmount,
     navigate,

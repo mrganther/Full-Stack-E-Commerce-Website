@@ -11,10 +11,11 @@ export default function Navbar() {
 
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isCartCheckOut = location.pathname === "/place-order";
 
   const { getCartCount } = useContext(ShopContext);
 
-  return (
+  return !isCartCheckOut ? (
     <div>
       <nav
         className={`flex top-0 left-0 w-full z-10 transition-colors ${
@@ -146,6 +147,14 @@ export default function Navbar() {
             CONTACT
           </NavLink>
         </div>
+      </div>
+    </div>
+  ) : (
+    <div className="bg-emerald-500 dark:bg-gray-800 backdrop-blur-md shadow">
+      <div className="container mx-auto items-center flex justify-center py-4 px-6 md:px-20 lg:px-32">
+        <Link to={"/"}>
+          <h1 className="text-gray-800 dark:text-gray-100">Brand Name</h1>
+        </Link>
       </div>
     </div>
   );
